@@ -10,7 +10,7 @@ RUN mkdir -p /usr/local/lib/docker/cli-plugins && \
 	chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
 WORKDIR /root
-VOLUME [ "/root/work", "/root/actions-runner/" ]
+VOLUME [ "/root/actions-runner/_work/" ]
 
 RUN mkdir actions-runner && \
     cd actions-runner && \
