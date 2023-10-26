@@ -18,3 +18,9 @@ or launch the container in the background:
 ```bash
 docker compose up -d
 ```
+
+## Prune docker data with crontab
+
+```bash
+echo "0 0 * * * docker system prune -f" | crontab -
+```
