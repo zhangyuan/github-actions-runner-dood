@@ -1,19 +1,11 @@
 FROM ubuntu:23.04
 
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
+    build-essential
 
-RUN for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done || true
-
-RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-RUN apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+RUN mkdir -p /usr/local/lib/docker/cli-plugins && \
+	curl -SL https://github.com/docker/compose/releases/download/v2.20.3/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose && \
+	chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
 WORKDIR /root
 VOLUME [ "/root/work", "/root/actions-runner/" ]
