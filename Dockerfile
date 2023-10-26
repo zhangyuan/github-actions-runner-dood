@@ -16,7 +16,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --yes --dearmo
 RUN apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 WORKDIR /root
-VOLUME [ "/root/work" ]
+VOLUME [ "/root/work", "/root/actions-runner/" ]
 
 RUN mkdir actions-runner && \
     cd actions-runner && \
