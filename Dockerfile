@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 RUN apt-get update && apt-get install -y \
-    build-essential curl git libicu-dev
+    build-essential curl git libicu-dev lsb-release
 
 COPY --from=docker:dind /usr/local/bin/docker /usr/local/bin/
 
