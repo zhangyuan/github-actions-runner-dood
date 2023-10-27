@@ -6,6 +6,7 @@ services:
       - REPO_URL
       - REGISTRATION_TOKEN
       - RUNNER_NAME
+      - RUNNER_LABLES
       - RUNNER_ALLOW_RUNASROOT=1
     command: ["run"]
     volumes:
