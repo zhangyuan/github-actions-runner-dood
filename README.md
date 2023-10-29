@@ -1,3 +1,9 @@
+# Github Actions runner via Docker outside of Docker
+
+This is a basic setup of Github Actions runner in docker with docker-compose. Althought it can work in common cases, be ware of the following cases:
+
+* If the job consists of service container and the the job runs directly on the runner, and job won't be able to access the service via port. This is because the docker daemon runs on the host machine, thus the service container is exposed on the host machine. To solve the issue, you may have to run the runner on the host rather than in docker (e.g. https://github.com/zhangyuan/setup-github-actions-runner-on-vm ), or run the job in the container.
+
 ## Build the image
 
 ```bash
