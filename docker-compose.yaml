@@ -1,12 +1,13 @@
 version: "3.8"
 services:
   runner:
+    image: zhangyuan/github-actions-runner:v0.0.2
     build: .
     environment:
       - REPO_URL
       - REGISTRATION_TOKEN
       - RUNNER_NAME
-      - RUNNER_LABLES
+      - RUNNER_LABELS
       - RUNNER_ALLOW_RUNASROOT=1
     command: ["run"]
     volumes:
